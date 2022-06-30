@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:streaming_app/models/category_item_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [
           SizedBox(
-            height: 120,
+            height: size.height * 0.17,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context,index) => Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CategoryItem(selected: index==0 ? true : false,),
+                  child: CategoryItemWidget(
+                    selected: index==0 ? true : false,
+                    item: categoryItemsList[index],
+                  ),
                 ),
-                itemCount: 20,
+                itemCount: categoryItemsList.length,
             ),
           )
 
@@ -27,10 +33,12 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class CategoryItem extends StatelessWidget {
+class CategoryItemWidget extends StatelessWidget {
   final bool selected;
-  const CategoryItem({
+  final CategoryItemModel item;
+  const CategoryItemWidget({
     required this.selected,
+    required this.item,
     Key? key,
   }) : super(key: key);
 
@@ -38,7 +46,6 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.12,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(125),
         gradient: selected ? const LinearGradient(
@@ -49,14 +56,22 @@ class CategoryItem extends StatelessWidget {
         color: selected ? null : const Color(0xFFF7F7F7)
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const CircleAvatar(
-            backgroundColor: Color(0xFFFCFAFE),
-            child: Icon(Icons.add),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: size.width * 0.05,
+              backgroundColor: const Color(0xFFFCFAFE),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(item.iconPath),
+              ),
+            ),
           ),
+          const Spacer(),
+          Text(item.name,style: GoogleFonts.poppins(fontSize: 12,color: selected ? Colors.white : const Color(0xFF7F85A2)),),
           const SizedBox(height: 8,),
-          Text('All',style: GoogleFonts.poppins(fontSize: 12,color: selected ? Colors.white : const Color(0xFF7F85A2)),)
         ],
       ),
     );

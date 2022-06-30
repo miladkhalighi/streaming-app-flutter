@@ -1,30 +1,30 @@
 
 
-class CategoryItem {
+class CategoryItemModel {
   String name;
   String iconPath;
 
-  CategoryItem({required this.name,required this.iconPath});
+  CategoryItemModel({required this.name,required this.iconPath});
 }
 
-List<CategoryItem> categoryItemsList = [
-  CategoryItem(
+List<CategoryItemModel> categoryItemsList = [
+  CategoryItemModel(
       name: 'All',
       iconPath: 'assets/icons/activity.svg'
   ),
-  CategoryItem(
-      name: 'assets/icons/music.svg',
-      iconPath: 'iconPath'
+  CategoryItemModel(
+      name: 'Music',
+      iconPath: 'assets/icons/music.svg'
   ),
-  CategoryItem(
-      name: 'assets/icons/sport.svg',
-      iconPath: 'iconPath'
+  CategoryItemModel(
+      name: 'Sports',
+      iconPath: 'assets/icons/sport.svg'
   ),
-  CategoryItem(
+  CategoryItemModel(
       name: 'Food',
       iconPath: 'assets/icons/pizza-1.svg'
   ),
-  CategoryItem(
+  CategoryItemModel(
       name: 'News',
       iconPath: 'assets/icons/vec.svg'
   ),
