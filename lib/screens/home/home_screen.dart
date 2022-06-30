@@ -61,7 +61,7 @@ class CategoryItemWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              radius: size.width * 0.05,
+              radius: 27,
               backgroundColor: const Color(0xFFFCFAFE),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -71,7 +71,7 @@ class CategoryItemWidget extends StatelessWidget {
           ),
           const Spacer(),
           Text(item.name,style: GoogleFonts.poppins(fontSize: 12,color: selected ? Colors.white : const Color(0xFF7F85A2)),),
-          const SizedBox(height: 8,),
+          const SizedBox(height: 12,),
         ],
       ),
     );
