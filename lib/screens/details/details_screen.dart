@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:streaming_app/models/session_model.dart';
+
+import 'components/action_button.dart';
 
 class DetailsSceen extends StatelessWidget {
   final SessionModel item;
@@ -134,6 +134,24 @@ class DetailsSceen extends StatelessWidget {
                     const Spacer(),
                   ],
                 ),
+              ),
+              /// bottom Texts
+              Positioned(
+                bottom: (size.height / 6.34) + 16,
+                left: 32,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.title,style: GoogleFonts.poppins(fontSize: 22,color: Colors.white),),
+                    Row(
+                      children: [
+                        CircleAvatar(backgroundImage : AssetImage(item.userImgPath),radius: 12,),
+                        const SizedBox(width: 8,),
+                        Text(item.userName,style: GoogleFonts.prompt(fontSize: 12,color: Colors.white),),
+                      ],
+                    ),
+                  ],
+                ),
               )
 
             ],
@@ -144,36 +162,4 @@ class DetailsSceen extends StatelessWidget {
   }
 }
 
-class ActionBtn extends StatelessWidget {
-  final String iconPath;
-  final String title;
-  final Function() onTap;
-  const ActionBtn({
-    Key? key, required this.iconPath, required this.title, required this.onTap,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: onTap,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white.withOpacity(0.36)
-            ),
-            width: 60,
-            height: 60,
-            child: Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: SvgPicture.asset(iconPath),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8,),
-        Text(title,style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)
-      ],
-    );
-  }
-}

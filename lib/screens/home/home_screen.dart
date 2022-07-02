@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 16,),
               ///category view
               categotyItemsView(size, bodyMargin),
               const SizedBox(height: 16,),
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: sessionItemsController.trendList.length,
                   itemBuilder: (context,index){
                     return Padding(
-                      padding: EdgeInsets.fromLTRB(index==0 ? bodyMargin :10,0,index==sessionList.length-1 ? bodyMargin : 10,0),
+                      padding: EdgeInsets.fromLTRB(index==0 ? bodyMargin :10,0,index==sessionItemsController.trendList.length-1 ? bodyMargin : 10,0),
                       child: SessionItemWidget(
                         item: sessionItemsController.trendList[index],
                       ),
