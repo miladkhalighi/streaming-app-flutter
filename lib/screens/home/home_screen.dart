@@ -110,16 +110,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context,index) => Padding(
-                      padding: EdgeInsets.fromLTRB(index==0 ? bodyMargin : 8,0,8,0),
-                      child: Obx(
-                        ()=> CategoryItemWidget(
-                          selected: index == categoryController.selectedIndex.value ? true : false,
-                          item: categoryItemsList[index],
-                          onTap: (){categoryController.updateIndex(index);},
+                    itemBuilder: (context,index) =>
+                      Obx(
+                        ()=> Padding(
+                          padding: EdgeInsets.fromLTRB(index==0 ? bodyMargin : 10,0,index==categoryItemsList.length-1 ? bodyMargin : 10,0),
+                          child: CategoryItemWidget(
+                            selected: index == categoryController.selectedIndex.value ? true : false,
+                            item: categoryItemsList[index],
+                            onTap: (){categoryController.updateIndex(index);},
+                          ),
                         ),
                       ),
-                    ),
                     itemCount: categoryItemsList.length,
                 ),
             );
