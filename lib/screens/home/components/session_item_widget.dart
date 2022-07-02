@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:streaming_app/screens/details/details_screen.dart';
 
 import '../../../models/session_model.dart';
 
@@ -15,7 +17,7 @@ class SessionItemWidget extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: (){
-        //todo : next page
+        Get.to(()=> DetailsSceen(item: item));
       },
       child: SizedBox(
         width: size.width/2,
