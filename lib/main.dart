@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:streaming_app/bindings/mybindings.dart';
 import 'package:streaming_app/screens/home/home_screen.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: MyBindings(),
       debugShowCheckedModeBanner: false,
       title: 'Streaming Demo',
       theme: ThemeData(
