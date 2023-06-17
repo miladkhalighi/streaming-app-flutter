@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    super.initState();
       sessionItemsController.getTrendItems();
   }
 
@@ -33,40 +34,38 @@ class _HomeScreenState extends State<HomeScreen> {
     var size = MediaQuery.of(context).size;
     var bodyMargin = size.width * 0.05;
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color(0xFFFCFAFE),
-        appBar: buildAppBar(bodyMargin),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16,),
-              ///category view
-              categotyItemsView(size, bodyMargin),
-              const SizedBox(height: 16,),
-              Padding(
-                padding: EdgeInsets.only(left: bodyMargin),
-                child: Text('Sessions You May Like',style: GoogleFonts.poppins(fontSize: 20,color: Colors.black),),
-              ),
-              const SizedBox(height: 16,),
-              ///session like View
-              sessionLikeView(size, bodyMargin),
-              const SizedBox(height: 32,),
-              Padding(
-                padding: EdgeInsets.only(left: bodyMargin),
-                child: Text('Trending Session',style: GoogleFonts.poppins(fontSize: 20,color: Colors.black),),
-              ),
-              const SizedBox(height: 16,),
-              /// session trending view
-              sessionTrendingView(size, bodyMargin),
-              const SizedBox(height: 32,),
+    return Scaffold(
+      backgroundColor: const Color(0xFFFCFAFE),
+      appBar: buildAppBar(bodyMargin),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 16,),
+            ///category view
+            categotyItemsView(size, bodyMargin),
+            const SizedBox(height: 16,),
+            Padding(
+              padding: EdgeInsets.only(left: bodyMargin),
+              child: Text('Sessions You May Like',style: GoogleFonts.poppins(fontSize: 20,color: Colors.black),),
+            ),
+            const SizedBox(height: 16,),
+            ///session like View
+            sessionLikeView(size, bodyMargin),
+            const SizedBox(height: 32,),
+            Padding(
+              padding: EdgeInsets.only(left: bodyMargin),
+              child: Text('Trending Session',style: GoogleFonts.poppins(fontSize: 20,color: Colors.black),),
+            ),
+            const SizedBox(height: 16,),
+            /// session trending view
+            sessionTrendingView(size, bodyMargin),
+            const SizedBox(height: 32,),
 
 
 
-            ],
-          ),
+          ],
         ),
       ),
     );
